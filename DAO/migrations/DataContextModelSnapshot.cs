@@ -18,9 +18,9 @@ namespace ProEventos.DAO.migrations
 
             modelBuilder.Entity("ProEventos.Model.Evento", b =>
                 {
-                    b.Property<Guid>("EventoId")
+                    b.Property<int>("EventoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DataEvento")
                         .HasColumnType("TEXT");

@@ -4,7 +4,7 @@ namespace ProEventos.Model
 {
     public class Evento
     {
-        public Guid EventoId { get; set; }
+        public int EventoId { get; set; }
         public string Local { get; set; } 
         public DateTime DataEvento { get; set; }
         public string Tema { get; set; }
