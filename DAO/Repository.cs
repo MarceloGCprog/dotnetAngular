@@ -15,7 +15,7 @@ namespace ProEventos.DAO
         public async Task<Evento[]> GetAllEventos(){
 
             IQueryable<Evento> query = _context.Eventos;
-            query = query.AsNoTracking().OrderBy(x => x.EventoId);
+            query = query.AsNoTracking().OrderBy(x => x.DataEvento);
             return await query.ToArrayAsync();
 
         }
