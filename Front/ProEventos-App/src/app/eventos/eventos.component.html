@@ -1,17 +1,21 @@
 
 <h2>Eventos</h2>
 <hr>
-<form action="" class="form-inline">
+<div class="form-inline">
   <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="buscar">
-    <button class="btn btn-outline-success"> Buscar</button>
+    <label class="mr-2">Filtro: </label>
+    <input type="text" class="form-control mr-2"
+    placeholder="buscar"
+    [(ngModel)]="filtrolista">
   </div>
-</form>
+</div>
 <table class="table table-striped">
   <thead class="thead-dark">
-    <tr>
+    <tr class="text-center">
+      <th> <button class="btn btn-outline-light btn-sm" (click)="isCollapsed = !isCollapsed">
+        {{isCollapsed ? 'imagem' : 'ocultar'}}</button>
+      </th>
       <th>#</th>
-      <th>Imagem</th>
       <th>Tema</th>
       <th>Local</th>
       <th>Data</th>
@@ -21,15 +25,28 @@
     </tr>
   </thead>
   <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let evento of eventos">
+    <tr *ngFor="let evento of eventosFiltrados" class="text-center">
+      <th>
+        <div *ngIf="isCollapsed">
+          {{evento.imagemURL}}"
+        </div>
+        <div [collapse]="isCollapsed" [isAnimated]="true">
+        <img src="/assets/{{evento.imagemURL}}" alt="Imagem de eventos"
+        [style.width.px]="imagewidth"
+        [style.margin.px]="imagemmargin"
+        [style.height.px]="imageheight">
+        </div>
+      </th>
       <th>{{evento.eventoId}}</th>
-      <th>{{evento.imagemURL}}</th>
       <th>{{evento.tema}}</th>
       <th>{{evento.local}}</th>
       <th>{{evento.dataEvento.split("T")[0]}}</th>
-      <th>{{evento.qtdPessoas}}</th>
+      <th class="text-center">{{evento.qtdPessoas}}</th>
       <th>{{evento.lote}}</th>
-      <th>Opcoes</th>
+      <th>
+        <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      </th>
     </tr>
   </tbody>
   <tfoot *ngIf="!eventos.length">
