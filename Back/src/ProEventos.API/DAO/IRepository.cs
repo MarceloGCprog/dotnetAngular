@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
-using ProEventos.Model;
+using ProEventos.Domain;
+using ProEventos.Persistence;
 
 namespace ProEventos.DAO
 {

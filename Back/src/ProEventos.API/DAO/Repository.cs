@@ -1,15 +1,16 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ProEventos.Model;
+using ProEventos.Domain;
+using ProEventos.Persistence;
 
 namespace ProEventos.DAO
 {
     public class Repository : IRepository    
     {
-        private readonly DataContext _context;
+        private readonly ProEventosContext _context;
 
-        public Repository (DataContext context){
+        public Repository ( ProEventosContext context){
             _context = context;
         }
         public async Task<Evento[]> GetAllEventos(){

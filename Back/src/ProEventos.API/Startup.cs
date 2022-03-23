@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ProEventos.Persistence;
 using ProEventos.DAO;
 
 namespace ProEventos
@@ -36,7 +37,7 @@ namespace ProEventos
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProEventos", Version = "v1" });
             });
             services.AddScoped<IRepository,Repository>();
-            services.AddDbContext<DataContext>(
+            services.AddDbContext<ProEventosContext>(
                 contexto => contexto.UseSqlite(Configuration.GetConnectionString("Default"))
             );
             
